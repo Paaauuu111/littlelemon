@@ -1,0 +1,18 @@
+### X code ###
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcworkspace/contents.xcworkspacedata
+**/xcshareddata/WorkspaceSettings.xcsettings
+
+/Littlelemon/*.xcodeproj/*
+!/Littlelemon/*.xcodeproj/project.pbxproj
+!/Littlelemon/*.xcodeproj/xcshareddata/
+!/Littlelemon/*.xcworkspace/contents.xcworkspacedata
+/Littlelemon/*/xcshareddata/WorkspaceSettings.xcsettings
+
+/*/*.xcodeproj/*
+!/*/*.xcodeproj/project.pbxproj
+!/*/*.xcodeproj/xcshareddata/
+!/*/*.xcworkspace/contents.xcworkspacedata
+/*/*/xcshareddata/WorkspaceSettings.xcsettings
