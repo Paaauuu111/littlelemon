@@ -10,6 +10,8 @@ import SwiftUI
 struct Menu: View {
     @Environment(\.managedObjectContext) private var viewContext
     
+    @State private var searchText = ""
+    
     var body: some View {
         VStack {
             Text("Little lemon")
@@ -19,7 +21,12 @@ struct Menu: View {
             Text("Hey, welcome to little lemon located in Chicago :)")
                 .padding()
             
-            FetchedObjects() { (dishes: [Dish]) in
+            TextField("Search menu", text: $searchText)
+            
+            FetchedObjects(
+                predicate: buildPredicate(),
+                sortDescriptors: buildSortDescriptors()
+            ) { (dishes: [Dish]) in
                 List {
                     ForEach(dishes, id:\.self) { dish in
                         HStack {
@@ -46,7 +53,7 @@ struct Menu: View {
         .padding()
     }
     
-    func getMenuData() {
+    private func getMenuData() {
         PersistenceController.shared.clear()
         
         let filePath = "https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Working-With-Data-API/main/menu.json"
@@ -71,7 +78,18 @@ struct Menu: View {
         }
         
         task.resume()
-        
+    }
+    
+    private func buildPredicate() -> NSPredicate {
+        return searchText == "" ? NSPredicate(value: true) : NSPredicate(format: "title CONTAINS[cd] %@", searchText)
+    }
+    private func buildSortDescriptors() -> [NSSortDescriptor] {
+        return [
+            NSSortDescriptor(key: "title",
+                             ascending: true,
+                             selector:
+                                #selector(NSString .localizedStandardCompare))
+        ]
     }
 }
 
