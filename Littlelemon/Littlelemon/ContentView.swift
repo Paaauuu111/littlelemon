@@ -2,12 +2,12 @@
 //  ContentView.swift
 //  Littlelemon
 //
-//  Created by Paul Poucher on 30/12/2024.
+//  Created by Paul on 30/12/2024.
 //
 
 import SwiftUI
 import CoreData
-
+#warning("remove this before submit!")
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 

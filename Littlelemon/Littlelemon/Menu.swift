@@ -9,7 +9,19 @@ import SwiftUI
 
 struct Menu: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Little lemon")
+                .padding()
+            Text("Chicago")
+                .padding()
+            Text("Hey, welcome to little lemon located in Chicago :)")
+                .padding()
+            
+            List {
+                
+            }
+        }
+        .padding()
     }
 }
 

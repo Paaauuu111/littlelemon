@@ -2,7 +2,7 @@
 //  Persistence.swift
 //  Littlelemon
 //
-//  Created by Paul Poucher on 30/12/2024.
+//  Created by Paul on 30/12/2024.
 //
 
 import CoreData

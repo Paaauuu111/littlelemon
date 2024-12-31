@@ -2,7 +2,7 @@
 //  LittlelemonApp.swift
 //  Littlelemon
 //
-//  Created by Paul Poucher on 30/12/2024.
+//  Created by Paul on 30/12/2024.
 //
 
 import SwiftUI
@@ -13,7 +13,7 @@ struct LittlelemonApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Onboarding()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
