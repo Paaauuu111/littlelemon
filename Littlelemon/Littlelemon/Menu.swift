@@ -2,7 +2,7 @@
 //  Menu.swift
 //  Littlelemon
 //
-//  Created by Paul Poucher on 31/12/2024.
+//  Created by Paul on 31/12/2024.
 //
 
 import SwiftUI
@@ -18,10 +18,11 @@ struct Menu: View {
                 .padding()
             Text("Chicago")
                 .padding()
-            Text("Hey, welcome to little lemon located in Chicago :)")
+            Text("Hey, welcome to little lemon located in Chicago. We are a family owned Mediterranean restaurant :)")
                 .padding()
             
             TextField("Search menu", text: $searchText)
+                .padding()
             
             FetchedObjects(
                 predicate: buildPredicate(),

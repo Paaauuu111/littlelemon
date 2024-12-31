@@ -2,7 +2,7 @@
 //  UserProfile.swift
 //  Littlelemon
 //
-//  Created by Paul Poucher on 31/12/2024.
+//  Created by Paul on 31/12/2024.
 //
 
 import SwiftUI
@@ -18,14 +18,18 @@ struct UserProfile: View {
         VStack {
             Text("Personal Information")
             Image("profile-image-placeholder")
-            Text(firstName)
-            Text(lastName)
-            Text(email)
+            Text("First name: \(firstName)")
+                .padding()
+            Text("Last name: \(lastName)")
+                .padding()
+            Text("Email: \(email)")
+                .padding()
             
             Button("Logout") {
                 UserDefaults.standard.set(false, forKey: kIsLoggedInKey)
                 presentation.wrappedValue.dismiss()
             }
+            .padding()
         }
     }
 }

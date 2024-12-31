@@ -2,7 +2,7 @@
 //  MenuItem.swift
 //  Littlelemon
 //
-//  Created by Paul Poucher on 31/12/2024.
+//  Created by Paul on 31/12/2024.
 //
 
 import Foundation
