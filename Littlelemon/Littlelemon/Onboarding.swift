@@ -58,9 +58,9 @@ struct Onboarding: View {
                         .stroke(.gray, lineWidth: 2)
                 )
             }
+            .padding()
+            .textFieldStyle(.roundedBorder)
         }
-        .padding()
-        .textFieldStyle(.roundedBorder)
     }
 }
 

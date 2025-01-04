@@ -13,52 +13,54 @@ struct Menu: View {
     @State private var searchText = ""
     
     var body: some View {
-        VStack {
-            VStack(alignment: .leading, spacing: 20) {
-                Text("Little lemon")
-                    .font(.title.bold())
-                    .foregroundStyle(.themeYellow)
-                Text("Chicago")
-                    .foregroundStyle(.white)
-                    .font(.title3)
-                    .bold()
-                Text("Little Lemon is a charming neighborhood bistro thatserves simple food and  classic cocktails in a lively but casual environment. The restaurant features a locally-sourced menu with daily specials.")
-                    .foregroundStyle(.white)
-            }
-            .padding(20)
-            .background(Color(.themeGreen))
-            
-            TextField("Search menu", text: $searchText)
-                .padding()
-            
-            FetchedObjects(
-                predicate: buildPredicate(),
-                sortDescriptors: buildSortDescriptors()
-            ) { (dishes: [Dish]) in
-                List {
-                    ForEach(dishes, id:\.self) { dish in
-                        HStack {
-                            if let imageUrl = dish.image,
-                               let url = URL(string: imageUrl) {
-                                AsyncImage(url: url) { result in
-                                    result.image?
-                                        .resizable()
-                                        .scaledToFit()
+        NavigationView {
+            VStack {
+                VStack(alignment: .leading, spacing: 20) {
+                    Text("Little lemon")
+                        .font(.title.bold())
+                        .foregroundStyle(.themeYellow)
+                    Text("Chicago")
+                        .foregroundStyle(.white)
+                        .font(.title3)
+                        .bold()
+                    Text("Little Lemon is a charming neighborhood bistro thatserves simple food and  classic cocktails in a lively but casual environment. The restaurant features a locally-sourced menu with daily specials.")
+                        .foregroundStyle(.white)
+                }
+                .padding(20)
+                .background(Color(.themeGreen))
+                
+                FetchedObjects(
+                    predicate: buildPredicate(),
+                    sortDescriptors: buildSortDescriptors()
+                ) { (dishes: [Dish]) in
+                    List {
+                        ForEach(dishes, id:\.self) { dish in
+                            HStack {
+                                if let imageUrl = dish.image,
+                                   let url = URL(string: imageUrl) {
+                                    AsyncImage(url: url) { result in
+                                        result.image?
+                                            .resizable()
+                                            .scaledToFit()
+                                    }
+                                    .frame(width: 150, height: 150, alignment: .center)
+                                        
                                 }
-                                .frame(width: 150, height: 150, alignment: .center)
-                                    
+                                
+                                Text("\(dish.title ?? "")\nPrice: \(dish.price ?? "")")
                             }
-                            
-                            Text("\(dish.title ?? "")\nPrice: \(dish.price ?? "")")
                         }
                     }
                 }
             }
+            .searchable(text: $searchText, prompt: "Search menu")
+            .navigationTitle("Order for delivery!")
+            .navigationBarTitleDisplayMode(.large)
+            .onAppear() {
+                getMenuData()
+            }
+            .padding()
         }
-        .onAppear() {
-            getMenuData()
-        }
-        .padding()
     }
     
     private func getMenuData() {
