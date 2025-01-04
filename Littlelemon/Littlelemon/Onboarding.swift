@@ -21,15 +21,17 @@ struct Onboarding: View {
     
     var body: some View {
         NavigationView {
-            VStack {
+            VStack(spacing: 20) {
                 NavigationLink("", destination: Home(), isActive: $isLoggedIn)
-                               
+                          
+                Image(.littleLemonLogo)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 300, alignment: .center)
+                
                 TextField("First name", text: $firstName)
-                    .padding()
                 TextField("Last name", text: $lastName)
-                    .padding()
                 TextField("Email", text: $email)
-                    .padding()
                 Button("Register") {
                     guard
                         !firstName.isEmpty
@@ -46,10 +48,19 @@ struct Onboarding: View {
                     
                     isLoggedIn = true
                 }
+                .foregroundStyle(.gray)
+                .frame(width: 142, height: 30, alignment: .center)
                 .padding()
+                .font(.title2)
+                .overlay(
+                    /// apply a rounded border
+                    RoundedRectangle(cornerRadius: 15)
+                        .stroke(.gray, lineWidth: 2)
+                )
             }
-            .padding()
         }
+        .padding()
+        .textFieldStyle(.roundedBorder)
     }
 }
 

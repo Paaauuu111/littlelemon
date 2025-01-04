@@ -14,12 +14,19 @@ struct Menu: View {
     
     var body: some View {
         VStack {
-            Text("Little lemon")
-                .padding()
-            Text("Chicago")
-                .padding()
-            Text("Hey, welcome to little lemon located in Chicago. We are a family owned Mediterranean restaurant :)")
-                .padding()
+            VStack(alignment: .leading, spacing: 20) {
+                Text("Little lemon")
+                    .font(.title.bold())
+                    .foregroundStyle(.themeYellow)
+                Text("Chicago")
+                    .foregroundStyle(.white)
+                    .font(.title3)
+                    .bold()
+                Text("Little Lemon is a charming neighborhood bistro thatserves simple food and  classic cocktails in a lively but casual environment. The restaurant features a locally-sourced menu with daily specials.")
+                    .foregroundStyle(.white)
+            }
+            .padding(20)
+            .background(Color(.themeGreen))
             
             TextField("Search menu", text: $searchText)
                 .padding()
